@@ -21,19 +21,19 @@ sudo nano eula.txt
 
 ### Enable Autostart
 
-`systemctl enable minecraft@FTBBeyond`
+`systemctl enable minecraft@survival`
 
 ### Disable Autostart
 
-`systemctl disable minecraft@FTBBeyond`
+`systemctl disable minecraft@survival`
 
 ### Start Manually
 
-`systemctl start minecraft@FTBBeyond`
+`systemctl start minecraft@survival`
 
 ### Stop Manually
 
-`systemctl stop minecraft@FTBBeyond`
+`systemctl stop minecraft@survival`
 
 ### Enter Server Commands
 
