@@ -19,6 +19,20 @@ ProtectControlGroups=true # It is hence recommended to turn this on for most ser
 ExecStart=/bin/sh -c '/usr/bin/screen -DmS mc-%i /usr/bin/java -Xms512M -Xmx1024M -jar $(ls -v | grep -i "paper.*jar\|FTBServer.*jar\|minecraft_server.*jar" | head -n 1) nogui'
 
 ExecReload=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "reload"\\015'
+ExecReload=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "reload confirm"\\015'
+
+ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "Server maintenance! You have 10 minutes to save your progress."\\015'
+ExecStop=/bin/sleep 420
+ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "Server maintenance! You have 3 minutes to save your progress."\\015'
+ExecStop=/bin/sleep 120
+ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "Server maintenance! You have 1 minute to save your progress."\\015'
+ExecStop=/bin/sleep 57
+ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "3..."\\015'
+ExecStop=/bin/sleep 1
+ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "2..."\\015'
+ExecStop=/bin/sleep 1
+ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "1..."\\015'
+ExecStop=/bin/sleep 1
 
 ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "say SERVER SHUTTING DOWN. Saving map..."\\015'
 ExecStop=/usr/bin/screen -p 0 -S mc-%i -X eval 'stuff "save-all"\\015'
