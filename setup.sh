@@ -1,5 +1,5 @@
-sudo adduser -s /sbin/nologin minecraft
 sudo groupadd minecraft
+sudo useradd -g minecraft -s /sbin/nologin minecraft
 sudo usermod -a -G minecraft minecraft
 sudo mkdir -p /opt/minecraft/survival
 sudo chown -R minecraft:minecraft /opt/minecraft/survival
